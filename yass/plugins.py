@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-from yass.models.plugin import PluginBase
+from models.plugin import PluginBase
 
 
 class Bing(PluginBase):

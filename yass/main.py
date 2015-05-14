@@ -14,8 +14,8 @@
 # limitations under the License.
 
 
-from yass.helpers import without_duplicates
-from yass.shortcuts import iter_plugins
+from helpers import without_duplicates
+from shortcuts import iter_plugins
 
 
 def main():

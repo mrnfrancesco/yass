@@ -17,7 +17,7 @@
 def iter_plugins(predicate=None):
     from models.plugin import PluginMeta, PluginBase
     import inspect
-    import yass.plugins
+    import plugins
 
     if predicate is None:
         def _predicate(cls):
@@ -26,5 +26,5 @@ def iter_plugins(predicate=None):
         def _predicate(cls):
             return isinstance(cls, PluginMeta) and cls != PluginBase and predicate(cls)
 
-    plugins = inspect.getmembers(yass.plugins, _predicate)
+    plugins = inspect.getmembers(plugins, _predicate)
     return [cls for name, cls in plugins]

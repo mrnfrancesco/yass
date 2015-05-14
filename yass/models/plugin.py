@@ -20,8 +20,8 @@ import sys
 
 from pyquery import PyQuery
 
-from yass.helpers import without_duplicates
-from yass.models.options import Options
+from helpers import without_duplicates
+from models.options import Options
 
 
 __all__ = ['PluginBase']
