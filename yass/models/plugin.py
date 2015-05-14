@@ -165,6 +165,7 @@ class PluginBase(with_metaclass(PluginMeta)):
                     requests=index
                 )
             )
+            sys.stdout.flush()
             index = (index + 1)
 
             url = self.url(exclude_subdomains=collected_subdomains)
