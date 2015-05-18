@@ -150,6 +150,12 @@ class PluginBase(with_metaclass(PluginMeta)):
         return url
 
     def run(self):
+        """
+        Start plugin execution
+
+        :return: collected subdomains one by one
+        :rtype: __generator
+        """
         meta = self._meta
         collected_subdomains = []
 
@@ -163,6 +169,7 @@ class PluginBase(with_metaclass(PluginMeta)):
             # Check if there is at least one result or if
             # the "no more results found" page was reached
             if subdomains:
+                # Remove already collected subdomains
                 subdomains = list(set(subdomains) - set(collected_subdomains))
                 collected_subdomains += subdomains
 
