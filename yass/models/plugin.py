@@ -108,7 +108,7 @@ class PluginBase(with_metaclass(PluginMeta)):
         Clean subdomains URLs from noise
 
         :param urls: an ensamble of URLs to clean
-        :type urls: str [, str [, ...]]
+        :type urls: list[str]
         :return: cleaned subdomains URLs
         :rtype: list[str]
         """
