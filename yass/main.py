@@ -14,18 +14,45 @@
 # limitations under the License.
 
 
-from helpers import without_duplicates
+import sys
+
 from shortcuts import iter_plugins
 
 
 def main():
-    domain = 'microsoft.com'
+    domain = sys.argv[1]
     subdomains = []
+    try:
+        subdomains = sys.argv[2:]
+    except IndexError:
+        pass
 
     for Plugin in iter_plugins():
-        subdomains = without_duplicates(subdomains + Plugin(domain, exclude_subdomains=subdomains).run())
+        index = 1
+        print "[INFO] Collecting subdomains with {plugin_name}".format(plugin_name=Plugin.__name__)
 
-    print  # blank line
+        try:
+            for subdomain in Plugin(domain, exclude_subdomains=subdomains).run():
+
+                if subdomain not in subdomains:
+                    subdomains.append(subdomain)
+
+                print "\t[{index}/{total}] Discovered subdomain: {subdomain}".format(
+                    index=index,
+                    total=len(subdomains),
+                    subdomain=subdomain
+                )
+                index += 1
+
+            print  # blank line
+
+        except Exception as e:
+            print "\t[ERR] Got an unexpected error during connection ({exc_type}: {message})\n" \
+                  "\t\t[-] Aborting {plugin_name} execution".format(
+                exc_type=e.__class__.__name__,
+                message=e.message,
+                plugin_name=Plugin.__name__
+            )
 
     if subdomains:
         print "Collected {collected} subdomains: {subdomains}".format(

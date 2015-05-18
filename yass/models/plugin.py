@@ -16,7 +16,6 @@
 
 import re
 import time
-import sys
 
 from pyquery import PyQuery
 
@@ -154,47 +153,22 @@ class PluginBase(with_metaclass(PluginMeta)):
         meta = self._meta
         collected_subdomains = []
 
-        processing_symbols = ['|', '/', '-', '\\']
-        index = 0
-
         while True:
-            sys.stdout.write(
-                "[{symbol}] Collecting subdomains with {plugin_name} ({requests} request(s) executed)\r".format(
-                    symbol=processing_symbols[index % len(processing_symbols)],
-                    plugin_name=self.__class__.__name__,
-                    requests=index
-                )
-            )
-            sys.stdout.flush()
-            index = (index + 1)
-
             url = self.url(exclude_subdomains=collected_subdomains)
 
-            elements = []
-            try:
-                pq = PyQuery(url=url)
-                elements = pq(meta.subdomains_selector)
-            except Exception as e:
-                print "[X] Got an unexpected error during connection ({message})\n" \
-                      "\t[-] Aborting {plugin_name} execution".format(
-                    message=e.message,
-                    plugin_name=self.__class__.__name__
-                )
-                break
+            pq = PyQuery(url=url)
+            elements = pq(meta.subdomains_selector)
 
             subdomains = self.clean(self.extract(elements))
+            # Check if there is at least one result or if
+            # the "no more results found" page was reached
             if subdomains:
-                collected_subdomains = without_duplicates(collected_subdomains + subdomains)
+                subdomains = list(set(subdomains) - set(collected_subdomains))
+                collected_subdomains += subdomains
+
+                for subdomain in subdomains:
+                    yield subdomain
+
+                time.sleep(meta.request_delay)  # To avoid error 503 (Service Unavailable), or CAPTCHA
             else:
-                print "[{plugin_name}] Collected {collected} subdomains".format(
-                    plugin_name=self.__class__.__name__,
-                    collected=len(collected_subdomains)
-                )
                 break
-
-            if self.domain in collected_subdomains:
-                collected_subdomains.remove(self.domain)
-
-            time.sleep(meta.request_delay)  # To avoid error 503 (Service Unavailable), or CAPTCHA
-
-        return collected_subdomains
