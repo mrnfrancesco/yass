@@ -173,7 +173,7 @@ class PluginBase(with_metaclass(PluginMeta)):
             elements = []
             try:
                 pq = PyQuery(url=url)
-                elements = pq(meta.subdomains_pattern)
+                elements = pq(meta.subdomains_selector)
             except Exception as e:
                 print "[X] Got an unexpected error during connection ({message})\n" \
                       "\t[-] Aborting {plugin_name} execution".format(

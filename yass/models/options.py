@@ -24,7 +24,7 @@ class Options(object):
         self.include_param = 'site%3A'
         self.exclude_param = '-site%3A'
 
-        self.subdomains_pattern = None
+        self.subdomains_selector = None
 
         self.request_delay = .250
 

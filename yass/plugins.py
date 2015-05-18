@@ -20,11 +20,11 @@ from models.plugin import PluginBase
 class Bing(PluginBase):
     class Meta:
         search_url = 'http://www.bing.com/search'
-        subdomains_pattern = '#b_results li.b_algo cite'
+        subdomains_selector = '#b_results li.b_algo cite'
 
 
 class Google(PluginBase):
     class Meta:
         search_url = 'https://www.google.com/search'
-        subdomains_pattern = 'li.g cite'
+        subdomains_selector = 'li.g cite'
         request_delay = 1

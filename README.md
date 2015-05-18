@@ -19,7 +19,7 @@ YASS plugins follow just a few rules:
     - `query_param` [default: `'q'`], the parameter used to store the query
     - `include_param` [default: `'site%3A'`], the parameter to use in the search engine to search for a specific domain
     - `exclude_param` [default: `'-site%3A'`], the parameter to use in the search engine to exclude a specific domain from the results
-    - `subdomains_pattern` [mandatory], the jQuery selector (yes, jQuery) where to find the subdomain from the results page
+    - `subdomains_selector` [mandatory], the jQuery selector (yes, jQuery) where to find the subdomains from the results page
     - `request_delay` [default: `.250`], the number of seconds to wait after every query before querying again
 
 3. You can use the default plugin behaviour in most cases, but if you need to change it you could override these methods only:
