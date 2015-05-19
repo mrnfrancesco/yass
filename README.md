@@ -5,7 +5,18 @@ YASS is a plugin-based subdomainer.
 Its goal is to give you a tool to query whatever search engine you like and parse HTML response writing *less than 10 lines of code*.
 
 #### YASS Plugins
-YASS comes with two pre-installed plugins: `Google` and `Bing`. You can look at them in `yass/plugins.py`.
+YASS comes with some pre-installed plugins:
+
+- Aol
+- Ask
+- Baidu
+- Bing
+- Google
+- StartPage
+- WebCrawler
+- Yahoo
+
+You can look at them in `yass/plugins.py`.
 
 ##### How to write a new YASS plugin
 
