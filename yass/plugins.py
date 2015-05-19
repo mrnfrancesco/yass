@@ -17,6 +17,25 @@
 from models.plugin import PluginBase
 
 
+class Aol(PluginBase):
+    class Meta:
+        search_url = 'search.aol.com/aol/search'
+        subdomains_selector = 'span[property="f:durl"]'
+
+
+class Ask(PluginBase):
+    class Meta:
+        search_url = 'http://www.ask.com/web'
+        subdomains_selector = 'p.durl'
+
+
+class Baidu(PluginBase):
+    class Meta:
+        search_url = 'https://www.baidu.com/s'
+        query_param = 'wd'
+        subdomains_selector = 'span.g'
+
+
 class Bing(PluginBase):
     class Meta:
         search_url = 'http://www.bing.com/search'
@@ -29,6 +48,17 @@ class Google(PluginBase):
         subdomains_selector = 'li.g cite'
         request_delay = 1
 
+
+class StartPage(PluginBase):
+    class Meta:
+        search_url = 'https://startpage.com/do/search'
+        subdomains_selector = 'span.url'
+
+
+class WebCrawler(PluginBase):
+    class Meta:
+        search_url = 'http://www.webcrawler.com/search/web'
+        subdomains_selector = 'div.resultDisplayUrl'
 
 class Yahoo(PluginBase):
     class Meta:
