@@ -28,3 +28,10 @@ class Google(PluginBase):
         search_url = 'https://www.google.com/search'
         subdomains_selector = 'li.g cite'
         request_delay = 1
+
+
+class Yahoo(PluginBase):
+    class Meta:
+        search_url = 'https://search.yahoo.com/search'
+        query_param = 'p'
+        subdomains_selector = 'div.compTitle div span'
