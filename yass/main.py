@@ -37,12 +37,12 @@ def main():
                 if subdomain not in subdomains:
                     subdomains.append(subdomain)
 
-                print "\t[{index}/{total}] Discovered subdomain: {subdomain}".format(
-                    index=index,
-                    total=len(subdomains),
-                    subdomain=subdomain
-                )
-                index += 1
+                    print "\t[{index}/{total}] Discovered subdomain: {subdomain}".format(
+                        index=index,
+                        total=len(subdomains),
+                        subdomain=subdomain
+                    )
+                    index += 1
 
             print  # blank line
 
