@@ -55,6 +55,7 @@ def main():
             )
 
     if subdomains:
+        subdomains.sort()
         print "Collected {collected} subdomains: {subdomains}".format(
             collected=len(subdomains),
             subdomains=', '.join(subdomains)
