@@ -19,7 +19,7 @@ from models.plugin import PluginBase
 
 class Aol(PluginBase):
     class Meta:
-        search_url = 'search.aol.com/aol/search'
+        search_url = 'http://search.aol.com/aol/search'
         subdomains_selector = 'span[property="f:durl"]'
 
 
