@@ -165,12 +165,11 @@ class PluginBase(with_metaclass(PluginMeta)):
             pq = PyQuery(url=url)
             elements = pq(meta.subdomains_selector)
 
-            subdomains = self.clean(self.extract(elements))
-            # Check if there is at least one result or if
-            # the "no more results found" page was reached
+            subdomains = self.clean(self.extract(elements)) or []
+            # Remove already collected subdomains
+            subdomains = list(set(subdomains) - set(collected_subdomains))
+            # Check if there is at least one result
             if subdomains:
-                # Remove already collected subdomains
-                subdomains = list(set(subdomains) - set(collected_subdomains))
                 collected_subdomains += subdomains
 
                 for subdomain in subdomains:
