@@ -1,0 +1,7 @@
+include LICENSE
+include README
+include bin/yass
+
+graft yass
+
+global-exclude *.pyc

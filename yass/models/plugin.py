@@ -19,8 +19,8 @@ import time
 
 from pyquery import PyQuery
 
-from helpers import without_duplicates
-from models.options import Options
+from yass.helpers import without_duplicates
+from yass.models.options import Options
 
 
 __all__ = ['PluginBase']

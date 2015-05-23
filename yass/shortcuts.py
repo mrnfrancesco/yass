@@ -13,12 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import inspect
+
+from yass.models.plugin import PluginMeta, PluginBase
+import yass.plugins
+
 
 def iter_plugins(predicate=None):
-    from models.plugin import PluginMeta, PluginBase
-    import inspect
-    import plugins
-
     if predicate is None:
         def _predicate(cls):
             return isinstance(cls, PluginMeta) and cls != PluginBase
@@ -26,5 +27,5 @@ def iter_plugins(predicate=None):
         def _predicate(cls):
             return isinstance(cls, PluginMeta) and cls != PluginBase and predicate(cls)
 
-    plugins = inspect.getmembers(plugins, _predicate)
+    plugins = inspect.getmembers(yass.plugins, _predicate)
     return [cls for name, cls in plugins]
