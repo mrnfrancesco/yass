@@ -28,7 +28,7 @@ YASS plugins follow just a few rules:
 
 1. All the plugins are stored in ``yass/plugins.py`` module.
 
-2. Every plugin MUST subclass ``models.plugin.PluginBase`` and define an inner class named ``Meta`` with the following attributes in it:
+2. Every plugin MUST subclass ``yass.models.plugin.PluginBase`` and define an inner class named ``Meta`` with the following attributes in it:
 
     - ``search_url`` [mandatory],  a string representing the base URL for the search engine
     - ``query_param`` [default: ``'q'``], the parameter used to store the query
