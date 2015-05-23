@@ -14,7 +14,7 @@
 # limitations under the License.
 
 
-from models.plugin import PluginBase
+from yass.models.plugin import PluginBase
 
 
 class Aol(PluginBase):
