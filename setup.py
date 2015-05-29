@@ -5,12 +5,11 @@ import os
 from distutils.core import setup
 from distutils.sysconfig import get_python_lib
 
+import yass
 
 # Warn if we are installing over top of an existing installation. This can
 # cause issues where files that were deleted from a more recent YASS are
 # still present in site-packages.
-import yass
-
 overlay_warning = False
 existing_path = None
 
@@ -52,7 +51,7 @@ setup(
     version=yass.__version__,
     author=yass.__author__,
     author_email=yass.__author_email__,
-    description='{name} is a plugin-powered search engine based subdomainer'.format(yass.__uname__),
+    description='{name} is a plugin-powered search engine based subdomainer'.format(name=yass.__uname__),
     long_description=_('README'),
     license='Apache License, Version 2.0',
     keywords='subdomain crawling information-gathering',
