@@ -52,4 +52,17 @@ To install YASS and its requirements:
 
     git clone https://github.com/mrnfrancesco/yass.git  # or download and unzip .zip archive
     cd yass
-    python2 setup.py install
+    ./setup.py install
+
+#### USAGE
+
+    usage: yass [-h] [-u] [-v] -d DOMAIN [-e [SUBDOMAIN [SUBDOMAIN ...]]]
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      -u, --usage           show the usage and exit
+      -v, --version         show the version and exit
+      -d DOMAIN, --domain DOMAIN
+                            the domain to search for
+      -e [SUBDOMAIN [SUBDOMAIN ...]], --exclude [SUBDOMAIN [SUBDOMAIN ...]]
+                            the list of subdomains to exclude
