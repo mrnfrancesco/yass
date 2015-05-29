@@ -9,6 +9,8 @@ from distutils.sysconfig import get_python_lib
 # Warn if we are installing over top of an existing installation. This can
 # cause issues where files that were deleted from a more recent YASS are
 # still present in site-packages.
+import yass
+
 overlay_warning = False
 existing_path = None
 
@@ -46,15 +48,15 @@ def _(fname):
     return content
 
 setup(
-    name='yass',
-    version='0.1.0',
-    author='Francesco Marano (@mrnfrancesco)',
-    author_email='francesco.mrn24@gmail.com',
-    description='YASS is a plugin-powered search engine based subdomainer',
+    name=yass.__lname__,
+    version=yass.__version__,
+    author=yass.__author__,
+    author_email=yass.__author_email__,
+    description='{name} is a plugin-powered search engine based subdomainer'.format(yass.__uname__),
     long_description=_('README'),
     license='Apache License, Version 2.0',
     keywords='subdomain crawling information-gathering',
-    url='https://github.com/mrnfrancesco/yass',
+    url=yass.__source_url__,
     scripts=['bin/yass'],
     packages=['yass'],
     requires=['pyquery (>=1.2.9)'],
@@ -76,12 +78,12 @@ if overlay_warning:
 ========
 WARNING!
 ========
-You have just installed YASS over top of an existing
+You have just installed {name} over top of an existing
 installation, without removing it first. Because of this,
 your install may now include extraneous files from a
 previous version that have since been removed from
-YASS. This is known to cause a variety of problems.
+{name}. This is known to cause a variety of problems.
 You should manually remove the
 {existing_path}
-directory and re-install YASS.
-""".format(existing_path=existing_path))
+directory and re-install {name}.
+""".format(name=yass.__uname__, existing_path=existing_path))
