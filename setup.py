@@ -56,7 +56,7 @@ setup(
     keywords='subdomain crawling information-gathering',
     url='https://github.com/mrnfrancesco/yass',
     scripts=['bin/yass'],
-    packages=['yass', 'yass.models'],
+    packages=['yass'],
     requires=['pyquery (>=1.2.9)'],
     platforms=['OS Independent'],
     classifiers=[

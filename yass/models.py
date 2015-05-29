@@ -20,7 +20,6 @@ import time
 from pyquery import PyQuery
 
 from yass.helpers import without_duplicates
-from yass.models.options import Options
 
 
 __all__ = ['PluginBase']
@@ -30,6 +29,28 @@ class PluginMeta(type):
     """
     Metaclass for all plugins
     """
+    class Options(object):
+        """
+        Plugin options with default values
+        """
+        def __init__(self, meta=None):
+            # Default attribute-value pairs
+            self.search_url = None
+
+            self.query_param = 'q'
+
+            self.include_param = 'site%3A'
+            self.exclude_param = '-site%3A'
+
+            self.subdomains_selector = None
+
+            self.request_delay = .250
+
+            # Custom values
+            if meta:
+                for obj_name, obj in meta.__dict__.iteritems():
+                    if hasattr(self, obj_name):
+                        setattr(self, obj_name, obj)
 
     def __new__(mcs, name, bases, attrs):
         super_new = super(PluginMeta, mcs).__new__
@@ -50,7 +71,7 @@ class PluginMeta(type):
             meta = attr_meta
         base_meta = getattr(new_class, '_meta', None)
 
-        setattr(new_class, '_meta', Options(meta))
+        setattr(new_class, '_meta', PluginMeta.Options(meta))
         if base_meta and not base_meta.abstract:
             # Non-abstract child classes inherit some attributes from their
             # non-abstract parents.

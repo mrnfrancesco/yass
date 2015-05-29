@@ -15,7 +15,7 @@
 
 import inspect
 
-from yass.models.plugin import PluginMeta, PluginBase
+from yass.models import PluginMeta, PluginBase
 import yass.plugins
 
 
