@@ -3,17 +3,17 @@
 """Example main module to see what YASS is capable of."""
 
 import sys
+import argparse
 
+import yass
 from yass.shortcuts import iter_plugins
 
 
-def main():
-    domain = sys.argv[1]
-    subdomains = []
-    try:
-        subdomains = sys.argv[2:]
-    except IndexError:
-        pass
+def main(domain, excluded_subdomains=None):
+    if excluded_subdomains is None:
+        excluded_subdomains = list()
+
+    subdomains = list(excluded_subdomains)
 
     for Plugin in iter_plugins():
         index = 1
@@ -42,6 +42,9 @@ def main():
                 plugin_name=Plugin.__name__
             )
 
+    # Remove excluded subdomains from results
+    subdomains = list(set(subdomains) - set(excluded_subdomains))
+
     if subdomains:
         subdomains.sort()
         print "Collected {collected} subdomains: {subdomains}".format(
@@ -52,5 +55,41 @@ def main():
         print "No subdomain collected :("
 
 
+def parse(arguments=None):
+    parser = argparse.ArgumentParser(prog=yass.__lname__, fromfile_prefix_chars="@")
+
+    class UsageAction(argparse.Action):
+        def __call__(self, parser, namespace, values, option_string=None):
+            parser.print_usage()
+            parser.exit()
+
+    parser.add_argument('-u', '--usage', help="show the usage and exit", nargs=0, action=UsageAction)
+    parser.add_argument('-v', '--version', help="show the framework version an exit", action="version",
+                        version="{name} v{version}".format(name=yass.__uname__, version=yass.__version__))
+
+    parser.add_argument('-d', '--domain', help="the domain to search for", required=True)
+    parser.add_argument('-e', '--exclude', nargs='*', dest="excluded_subdomains", metavar="SUBDOMAIN", action="store",
+                        help="the list of subdomains to exclude")
+
+    return parser.parse_args(arguments)
+
+
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) is 1:
+        sys.argv.append('--usage')
+
+    options = parse(arguments=None)  # Use sys.argv[1:] as default arguments
+    print """
+    ________________________________________________
+    
+    {name} - {acronym} (v{version})
+        by {author}
+    ________________________________________________
+
+    """.format(
+        name=yass.__uname__,
+        acronym=yass.__acronym__,
+        version=yass.__version__,
+        author=yass.__author__
+    )
+    main(options.domain, options.excluded_subdomains)
