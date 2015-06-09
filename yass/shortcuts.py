@@ -20,12 +20,11 @@ import yass.plugins
 
 
 def iter_plugins(predicate=None):
-    if predicate is None:
-        def _predicate(cls):
-            return isinstance(cls, PluginMeta) and cls != PluginBase
-    else:
-        def _predicate(cls):
-            return isinstance(cls, PluginMeta) and cls != PluginBase and predicate(cls)
+    base_predicate = lambda cls: isinstance(cls, PluginMeta) and cls != PluginBase
+    _predicate = base_predicate
+
+    if predicate is not None and hasattr(predicate, '__call__'):
+        _predicate = lambda cls: base_predicate(cls) and predicate(cls)
 
     plugins = inspect.getmembers(yass.plugins, _predicate)
     return [cls for name, cls in plugins]

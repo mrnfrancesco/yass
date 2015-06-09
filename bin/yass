@@ -7,9 +7,11 @@ import argparse
 
 import yass
 from yass.shortcuts import iter_plugins
+from yass.logger import logger
+from yass.logger import config as logger_config
 
 
-def main(domain, excluded_subdomains=None):
+def collect(domain, excluded_subdomains=None):
     if excluded_subdomains is None:
         excluded_subdomains = list()
 
@@ -17,7 +19,7 @@ def main(domain, excluded_subdomains=None):
 
     for Plugin in iter_plugins():
         index = 1
-        print "[INFO] Collecting subdomains with {plugin_name}".format(plugin_name=Plugin.__name__)
+        logger().info("Collecting subdomains with {plugin_name}".format(plugin_name=Plugin.__name__))
 
         try:
             for subdomain in Plugin(domain, exclude_subdomains=subdomains).run():
@@ -25,63 +27,66 @@ def main(domain, excluded_subdomains=None):
                 if subdomain not in subdomains:
                     subdomains.append(subdomain)
 
-                    print "\t[{index}/{total}] Discovered subdomain: {subdomain}".format(
-                        index=index,
-                        total=len(subdomains),
-                        subdomain=subdomain
+                    logger().info(
+                        "\t({index}/{total}) {subdomain}".format(
+                            index=index,
+                            total=len(subdomains),
+                            subdomain=subdomain
+                        )
                     )
                     index += 1
 
-            print  # blank line
-
         except Exception as e:
-            print "\t[ERR] Got an unexpected error during connection ({exc_type}: {message})\n" \
-                  "\t\t[-] Aborting {plugin_name} execution".format(
-                exc_type=e.__class__.__name__,
-                message=e.message,
-                plugin_name=Plugin.__name__
+            logger().error(
+                "Got an unexpected error during connection ({exc_type}: {message})".format(
+                    exc_type=e.__class__.__name__,
+                    message=e.message
+                )
             )
+            logger().warning("Aborting {plugin_name} execution".format(plugin_name=Plugin.__name__))
 
     # Remove excluded subdomains from results
-    subdomains = list(set(subdomains) - set(excluded_subdomains))
-
-    if subdomains:
-        subdomains.sort()
-        print "Collected {collected} subdomains: {subdomains}".format(
-            collected=len(subdomains),
-            subdomains=', '.join(subdomains)
-        )
-    else:
-        print "No subdomain collected :("
+    return list(set(subdomains) - set(excluded_subdomains))
 
 
 def parse(arguments=None):
-    parser = argparse.ArgumentParser(prog=yass.__lname__, fromfile_prefix_chars="@")
+    parser = argparse.ArgumentParser(prog=yass.__lname__, fromfile_prefix_chars="@", add_help=False)
 
     class UsageAction(argparse.Action):
         def __call__(self, parser, namespace, values, option_string=None):
             parser.print_usage()
             parser.exit()
 
-    parser.add_argument('-u', '--usage', help="show the usage and exit", nargs=0, action=UsageAction)
-    parser.add_argument('-v', '--version', help="show the framework version an exit", action="version",
-                        version="{name} v{version}".format(name=yass.__uname__, version=yass.__version__))
-
-    parser.add_argument('-d', '--domain', help="the domain to search for", required=True)
-    parser.add_argument('-e', '--exclude', nargs='*', dest="excluded_subdomains", metavar="SUBDOMAIN", action="store",
+    parser.add_argument(dest='domain', metavar='DOMAIN', help="the domain to search for")
+    parser.add_argument(dest='excluded_subdomains', metavar='SUBDOMAIN', nargs='*', action="store",
                         help="the list of subdomains to exclude")
+
+    output = parser.add_argument_group('Output arguments')
+    output.add_argument('-g', '--grepable', help="output results in grepable format (default: %(default)s)",
+                        default=False, action="store_true")
+    output.add_argument('-d', '--debugging', default=False, action="store_true",
+                        help="set output format to a more verbose one, for debugging purpose (default: %(default)s)")
+    output.add_argument('-l', '--level', help="set output verbosity (default: %(default)s)",
+                        choices=['debug', 'info', 'warning', 'error', 'critical'], default='info')
+    color = output.add_mutually_exclusive_group(required=False)
+    color.add_argument('-c', '--color', dest="colored", help="use color in the output (default: %(default)s)",
+                       action="store_true", default=True)
+    color.add_argument('-nc', '--no-color', dest="colored", help="do not use color in the output",
+                       action="store_false")
+
+    infos = parser.add_argument_group(title='Informations')
+    infos.add_argument('-h', '--help', help="show this help and exit", action="help")
+    infos.add_argument('-u', '--usage', help="show the usage and exit", nargs=0, action=UsageAction)
+    infos.add_argument('-v', '--version', help="show the framework version an exit", action="version",
+                        version="{name} v{version}".format(name=yass.__uname__, version=yass.__version__))
 
     return parser.parse_args(arguments)
 
 
-if __name__ == '__main__':
-    if len(sys.argv) is 1:
-        sys.argv.append('--usage')
-
-    options = parse(arguments=None)  # Use sys.argv[1:] as default arguments
-    print """
+def banner():
+    return """
     ________________________________________________
-    
+
     {name} - {acronym} (v{version})
         by {author}
     ________________________________________________
@@ -92,4 +97,28 @@ if __name__ == '__main__':
         version=yass.__version__,
         author=yass.__author__
     )
-    main(options.domain, options.excluded_subdomains)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) is 1:
+        sys.argv.append('--usage')
+
+    options = parse(arguments=None)  # Use sys.argv[1:] as default arguments
+    if options.grepable:
+        options.level = None
+    logger_config(options.colored, options.debugging, options.level)
+
+    if not options.grepable:
+        print banner()
+
+    subdomains = collect(options.domain, options.excluded_subdomains)
+    subdomains.sort()
+
+    if options.grepable:
+        print '|'.join(subdomains)
+    else:
+        if subdomains:
+            print "Collected {collected} subdomains\n{subdomains}".format(
+                collected=len(subdomains),
+                subdomains=', '.join(subdomains)
+            )
