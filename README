@@ -50,13 +50,14 @@ YASS depends on:
 
 - Python <= 2.7.9
 
-and have just a requirement:
+and have just two requirements:
 
 - PyQuery >= 1.2.9
+- Colorama
 
 To install YASS and its requirements::
 
-    git clone https://github.com/mrnfrancesco/yass.git  # or download and unzip .zip archive
+    git clone https://github.com/mrnfrancesco/yass.git  # or download and unzip release archive
     cd yass
     ./setup.py install
 
@@ -64,13 +65,24 @@ To install YASS and its requirements::
 USAGE
 -------
 
-    usage: yass [-h] [-u] [-v] -d DOMAIN [-e [SUBDOMAIN [SUBDOMAIN ...]]]
+    usage: yass [-g] [-d] [-l {debug,info,warning,error,critical}] [-c | -nc] [-h]
+                [-u] [-v]
+                DOMAIN [SUBDOMAIN [SUBDOMAIN ...]]
 
-    optional arguments:
-      -h, --help            show this help message and exit
+    positional arguments:
+      DOMAIN                the domain to search for
+      SUBDOMAIN             the list of subdomains to exclude
+
+    Output arguments:
+      -g, --grepable        output results in grepable format (default: False)
+      -d, --debugging       set output format to a more verbose one, for debugging
+                            purpose (default: False)
+      -l {debug,info,warning,error,critical}, --level {debug,info,warning,error,critical}
+                            set output verbosity (default: info)
+      -c, --color           use color in the output (default: True)
+      -nc, --no-color       do not use color in the output
+
+    Informations:
+      -h, --help            show this help and exit
       -u, --usage           show the usage and exit
-      -v, --version         show the version and exit
-      -d DOMAIN, --domain DOMAIN
-                            the domain to search for
-      -e [SUBDOMAIN [SUBDOMAIN ...]], --exclude [SUBDOMAIN [SUBDOMAIN ...]]
-                            the list of subdomains to exclude
+      -v, --version         show the framework version an exit
