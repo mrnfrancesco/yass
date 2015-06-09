@@ -1,9 +1,7 @@
-=====
-0.6.4 (2015-06-09)
-=====
+# 0.6.4 (2015-06-09)
 
-Implemented enhancements:
--------------------------
+#### Implemented enhancements:
+
 - Added logger
 - Added some options:
     - `-g`, `--grepable`        output results in grepable format (default: False)
@@ -15,8 +13,6 @@ Implemented enhancements:
     - `-d`, `--domain`      changed to be first positional argument
     - `-e`, `--exclude`     changed to be second positional argument
 
-=====
-0.4.3 (2015-05-29)
-=====
+#### 0.4.3 (2015-05-29)
 
 First beta release
