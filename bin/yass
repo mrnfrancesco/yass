@@ -28,7 +28,7 @@ def collect(domain, excluded_subdomains=None):
                     subdomains.append(subdomain)
 
                     logger().info(
-                        "\t({index}/{total}) Discovered subdomain: {subdomain}".format(
+                        "\t({index}/{total}) {subdomain}".format(
                             index=index,
                             total=len(subdomains),
                             subdomain=subdomain
