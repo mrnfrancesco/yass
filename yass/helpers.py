@@ -15,10 +15,19 @@
 
 
 def without_duplicates(args):
-    if args:
-        if hasattr(args, '__iter__'):
-            return list(set(args))
+    """
+    Removes duplicated items from an iterable.
+
+    :param args: the iterable to remove duplicates from
+    :type args: iterable
+    :return: the same iterable without duplicated items
+    :rtype: iterable
+    :raise TypeError: if *args* is not iterable
+    """
+    if hasattr(args, '__iter__'):
+        if args:
+            return type(args)(set(args))
         else:
-            raise TypeError("expected iterable, got {args_type} insted".format(args_type=type(args)))
+            return args
     else:
-        return []
+        raise TypeError("Expected iterable, got {args_type} insted".format(args_type=type(args)))
