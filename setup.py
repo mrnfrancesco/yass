@@ -2,7 +2,7 @@
 
 import sys
 import os
-from distutils.core import setup
+from setuptools import setup
 from distutils.sysconfig import get_python_lib
 
 import yass
@@ -58,7 +58,7 @@ setup(
     url=yass.__source_url__,
     scripts=['bin/yass'],
     packages=['yass'],
-    requires=['pyquery >=1.2.9', 'colorama'],
+    install_requires=['pyquery >=1.2.9', 'colorama'],
     platforms=['OS Independent'],
     classifiers=[
         'Development Status :: 4 - Beta',
