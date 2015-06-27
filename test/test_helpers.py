@@ -28,7 +28,3 @@ class TestHelpers(unittest.TestCase):
         self.assertListEqual(no_duplicates, without_duplicates(duplicated))
         self.assertSetEqual(set(no_duplicates), without_duplicates(set(duplicated)))
         self.assertTupleEqual(tuple(no_duplicates), without_duplicates(tuple(duplicated)))
-
-
-if __name__ == '__main__':
-    unittest.main()

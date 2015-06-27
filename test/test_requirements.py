@@ -17,7 +17,3 @@ class TestRequirements(unittest.TestCase):
             or (major == 1 and minor == 2 and micro >= 9),  # version 1.2.9 or greater
             "PyQuery version MUST be >= 1.2.9 (got {version} instead)".format(version=pyquery_version)
         )
-
-
-if __name__ == '__main__':
-    unittest.main()
