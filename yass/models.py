@@ -118,7 +118,7 @@ class PluginBase(with_metaclass(PluginMeta)):
         Extract data from given HTML elements
 
         :param elements: HTML elements obtained with PyQuery execution
-        :type strings: list[Element]
+        :type elements: list[Element]
         :return: extracted data
         :rtype: list[str]
         """
