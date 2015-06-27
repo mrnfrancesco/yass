@@ -58,7 +58,7 @@ setup(
     url=yass.__source_url__,
     scripts=['bin/yass'],
     packages=['yass'],
-    requires=['pyquery (>=1.2.9)', 'colorama'],
+    requires=['pyquery >=1.2.9', 'colorama'],
     platforms=['OS Independent'],
     classifiers=[
         'Development Status :: 4 - Beta',
