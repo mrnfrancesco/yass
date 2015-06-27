@@ -112,7 +112,8 @@ class PluginBase(with_metaclass(PluginMeta)):
                 )
             )
 
-    def extract(self, elements):
+    @staticmethod
+    def extract(elements):
         """
         Extract data from given HTML elements
 
