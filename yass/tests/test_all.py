@@ -2,8 +2,8 @@ import unittest
 import inspect
 import sys
 
-import test_shortcuts
 import test_requirements
+import test_shortcuts
 import test_helpers
 
 if __name__ == '__main__':
@@ -37,8 +37,8 @@ if __name__ == '__main__':
 
     result = unittest.TextTestRunner(verbosity=2).run(
         unittest.TestSuite([
-            suite(test_helpers),
             suite(test_requirements),
+            suite(test_helpers),
             suite(test_shortcuts),
         ])
     )
