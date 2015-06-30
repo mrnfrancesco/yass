@@ -1,5 +1,6 @@
 import unittest
 import inspect
+import sys
 
 import test_shortcuts
 import test_requirements
@@ -41,3 +42,8 @@ if __name__ == '__main__':
             suite(test_shortcuts),
         ])
     )
+
+    if result.failures:
+        sys.exit(1)  # make Travis CI to fail in case of errors
+    else:
+        sys.exit(0)
