@@ -1,6 +1,7 @@
 # YASS - Yet Another Subdomainer Software
 
 [![Build Status](https://travis-ci.org/mrnfrancesco/yass.svg?branch=master)](https://travis-ci.org/mrnfrancesco/yass)
+[![Code Climate](https://codeclimate.com/github/mrnfrancesco/yass/badges/gpa.svg)](https://codeclimate.com/github/mrnfrancesco/yass)
 [![Dependency Status](https://gemnasium.com/mrnfrancesco/yass.svg)](https://gemnasium.com/mrnfrancesco/yass)
 
 YASS is a plugin-powered search engine based subdomainer.

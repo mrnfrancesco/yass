@@ -5,6 +5,9 @@ YASS - Yet Another Subdomainer Software
 
 .. image:: https://travis-ci.org/mrnfrancesco/yass.svg?branch=master
     :target: https://travis-ci.org/mrnfrancesco/yass
+.. image:: https://codeclimate.com/github/mrnfrancesco/yass/badges/gpa.svg
+   :target: https://codeclimate.com/github/mrnfrancesco/yass
+   :alt: Code Climate
 .. image:: https://gemnasium.com/mrnfrancesco/yass.svg
     :target: https://gemnasium.com/mrnfrancesco/yass
 
