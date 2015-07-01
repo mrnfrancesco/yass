@@ -55,8 +55,8 @@ class PluginMeta(type):
     def __new__(mcs, name, bases, attrs):
         super_new = super(PluginMeta, mcs).__new__
 
-        # Ensure initialization is only performed for subclasses of Plugin
-        # (excluding Plugin class itself).
+        # Ensure initialization is only performed for subclasses of PluginBase
+        # (excluding PluginBase class itself).
         parents = [b for b in bases if isinstance(b, PluginMeta)]
         if not parents:
             return super_new(mcs, name, bases, attrs)
@@ -112,12 +112,13 @@ class PluginBase(with_metaclass(PluginMeta)):
                 )
             )
 
-    def extract(self, elements):
+    @staticmethod
+    def extract(elements):
         """
         Extract data from given HTML elements
 
         :param elements: HTML elements obtained with PyQuery execution
-        :type strings: list[Element]
+        :type elements: list[Element]
         :return: extracted data
         :rtype: list[str]
         """
