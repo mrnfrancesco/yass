@@ -32,7 +32,7 @@ def logger(depth=3):
     Provide a logger instance with no need to specify the name, cause it will get it automagically.
     To use it just import the method at module level with
 
-    >>> from logger import logger
+    >>> from yass.logger import logger
 
     Then use it in whatever level you want (module, function, class or method), e.g.:
 
