@@ -109,16 +109,18 @@ if __name__ == '__main__':
     logger_config(options.colored, options.debugging, options.level)
 
     if not options.grepable:
-        print banner()
+        print(banner())
 
     subdomains = collect(options.domain, options.excluded_subdomains)
     subdomains.sort()
 
     if options.grepable:
-        print '|'.join(subdomains)
+        print('|'.join(subdomains))
     else:
         if subdomains:
-            print "Collected {collected} subdomains\n{subdomains}".format(
-                collected=len(subdomains),
-                subdomains=', '.join(subdomains)
+            print(
+                "Collected {collected} subdomains\n{subdomains}".format(
+                    collected=len(subdomains),
+                    subdomains=', '.join(subdomains)
+                )
             )
