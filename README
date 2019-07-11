@@ -20,9 +20,9 @@ YASS comes with some pre-built plugins:
 
 - Aol
 - Ask
-- Baidu
+- Baidu (unresponsive)
 - Bing
-- Google
+- Google (disabled due to anti-bot checks)
 - StartPage
 - WebCrawler
 - Yahoo
