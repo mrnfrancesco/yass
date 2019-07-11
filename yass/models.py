@@ -1,5 +1,5 @@
 # YASS, Yet Another Subdomainer Software
-# Copyright 2015 Francesco Marano (@mrnfrancesco) and individual contributors.
+# Copyright 2015-2019 Francesco Marano (@mrnfrancesco) and individual contributors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -184,7 +184,7 @@ class PluginBase(with_metaclass(PluginMeta)):
         while True:
             url = self.url(exclude_subdomains=collected_subdomains)
 
-            pq = PyQuery(url=url)
+            pq = PyQuery(url=url, timeout=10)
             elements = pq(meta.subdomains_selector)
 
             subdomains = self.clean(self.extract(elements)) or []
