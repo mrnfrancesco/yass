@@ -10,7 +10,7 @@ class TestRequirements(unittest.TestCase):
 
         # Check pyquery requirement and version
         pyquery_version = pkg_resources.require('pyquery')[0].version
-        major, minor, micro = pyquery_version.split('.')
+        major, minor, micro = [int(val) for val in pyquery_version.split('.')]
         self.assertTrue(
             major > 1  # version 2 or greater
             or (major == 1 and minor > 2)  # version 1.3 or greater

@@ -24,7 +24,7 @@ def without_duplicates(args):
     :rtype: iterable
     :raise TypeError: if *args* is not iterable
     """
-    if hasattr(args, '__iter__'):
+    if hasattr(args, '__iter__') and not isinstance(args, str):
         if args:
             return type(args)(set(args))
         else:
