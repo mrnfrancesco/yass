@@ -74,7 +74,7 @@ def parse(arguments=None):
     infos.add_argument('-h', '--help', help="show this help and exit", action="help")
     infos.add_argument('-u', '--usage', help="show the usage and exit", nargs=0, action=UsageAction)
     infos.add_argument('-v', '--version', help="show the framework version an exit", action="version",
-                        version="{name} v{version}".format(name=yass.__uname__, version=yass.__version__))
+                       version="{name} v{version}".format(name=yass.__uname__, version=yass.__version__))
 
     return parser.parse_args(arguments)
 
