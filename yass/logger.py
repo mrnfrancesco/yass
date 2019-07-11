@@ -32,7 +32,7 @@ def logger(depth=3):
     Provide a logger instance with no need to specify the name, cause it will get it automagically.
     To use it just import the method at module level with
 
-    >>> from logger import logger
+    >>> from yass.logger import logger
 
     Then use it in whatever level you want (module, function, class or method), e.g.:
 
@@ -59,7 +59,7 @@ def logger(depth=3):
                 logger_name = inspect.getmodule(caller).__name__
             except:
                 pass
-        if depth >= 2 and caller.f_locals.has_key('self'):
+        if depth >= 2 and 'self' in caller.f_locals:
             logger_name += ('.' if logger_name else '') + caller.f_locals['self'].__class__.__name__
         if depth >= 3 and caller_frame[3] and caller_frame[3] != '<module>':
             logger_name += ('.' if logger_name else '') + caller_frame[3]

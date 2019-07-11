@@ -1,9 +1,10 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 """Example main module to see what YASS is capable of."""
 
 import sys
 import argparse
+from urllib.error import URLError
 
 import yass
 from yass.shortcuts import iter_plugins
@@ -36,13 +37,8 @@ def collect(domain, excluded_subdomains=None):
                     )
                     index += 1
 
-        except Exception as e:
-            logger().error(
-                "Got an unexpected error during connection ({exc_type}: {message})".format(
-                    exc_type=e.__class__.__name__,
-                    message=e.message
-                )
-            )
+        except URLError as e:
+            logger().error("Got an unexpected error during connection ({message})".format(message=str(e)))
             logger().warning("Aborting {plugin_name} execution".format(plugin_name=Plugin.__name__))
 
     # Remove excluded subdomains from results
@@ -109,16 +105,18 @@ if __name__ == '__main__':
     logger_config(options.colored, options.debugging, options.level)
 
     if not options.grepable:
-        print banner()
+        print(banner())
 
     subdomains = collect(options.domain, options.excluded_subdomains)
     subdomains.sort()
 
     if options.grepable:
-        print '|'.join(subdomains)
+        print('|'.join(subdomains))
     else:
         if subdomains:
-            print "Collected {collected} subdomains\n{subdomains}".format(
-                collected=len(subdomains),
-                subdomains=', '.join(subdomains)
+            print(
+                "Collected {collected} subdomains\n{subdomains}".format(
+                    collected=len(subdomains),
+                    subdomains=', '.join(subdomains)
+                )
             )

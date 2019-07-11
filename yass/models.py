@@ -48,8 +48,8 @@ class PluginMeta(type):
 
             # Custom values
             if meta:
-                for obj_name, obj in meta.__dict__.iteritems():
                     if hasattr(self, obj_name):
+                for obj_name, obj in iter(vars(meta).items()):
                         setattr(self, obj_name, obj)
 
     def __new__(mcs, name, bases, attrs):
