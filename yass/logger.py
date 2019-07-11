@@ -59,7 +59,7 @@ def logger(depth=3):
                 logger_name = inspect.getmodule(caller).__name__
             except:
                 pass
-        if depth >= 2 and caller.f_locals.has_key('self'):
+        if depth >= 2 and 'self' in caller.f_locals:
             logger_name += ('.' if logger_name else '') + caller.f_locals['self'].__class__.__name__
         if depth >= 3 and caller_frame[3] and caller_frame[3] != '<module>':
             logger_name += ('.' if logger_name else '') + caller_frame[3]
