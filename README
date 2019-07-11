@@ -54,11 +54,7 @@ YASS plugins follow just a few rules:
 INSTALL
 -------
 
-YASS depends on:
-
-- Python <= 2.7.9
-
-and have just two requirements:
+YASS is fully compatible with Python 3.7 and have just two requirements:
 
 - PyQuery >= 1.2.9
 - Colorama
