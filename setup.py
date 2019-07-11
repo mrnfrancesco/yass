@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
 import sys
 import os
@@ -28,7 +28,7 @@ if 'install' in sys.argv:
             break
 
 
-def _(fname):
+def _(fname: str) -> str:
     """
     Utility function to read the README file.
     Used to fill the *long_description* field.
@@ -42,9 +42,10 @@ def _(fname):
     :return: README file content
     :rtype: str
     """
-    with open(os.path.join(os.path.dirname(__file__), fname)) as readme:
-            content = readme.read() or ''  # prevent ``content = None``
+    with open(os.path.join(os.getcwd(), fname)) as readme:
+        content = readme.read() or ''  # prevent ``content = None``
     return content
+
 
 setup(
     name=yass.__lname__,
@@ -67,7 +68,7 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Security',
     ]
 )

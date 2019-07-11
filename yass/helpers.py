@@ -1,5 +1,5 @@
 # YASS, Yet Another Subdomainer Software
-# Copyright 2015 Francesco Marano (@mrnfrancesco) and individual contributors.
+# Copyright 2015-2019 Francesco Marano (@mrnfrancesco) and individual contributors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ def without_duplicates(args):
     :rtype: iterable
     :raise TypeError: if *args* is not iterable
     """
-    if hasattr(args, '__iter__'):
+    if hasattr(args, '__iter__') and not isinstance(args, str):
         if args:
             return type(args)(set(args))
         else:

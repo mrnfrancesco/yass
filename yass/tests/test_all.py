@@ -2,9 +2,9 @@ import unittest
 import inspect
 import sys
 
-import test_requirements
-import test_shortcuts
-import test_helpers
+from yass.tests import test_requirements
+from yass.tests import test_shortcuts
+from yass.tests import test_helpers
 
 if __name__ == '__main__':
     def suite(module):

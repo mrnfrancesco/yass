@@ -8,8 +8,8 @@ YASS - Yet Another Subdomainer Software
 .. image:: https://codeclimate.com/github/mrnfrancesco/yass/badges/gpa.svg
    :target: https://codeclimate.com/github/mrnfrancesco/yass
    :alt: Code Climate
-.. image:: https://gemnasium.com/mrnfrancesco/yass.svg
-    :target: https://gemnasium.com/mrnfrancesco/yass
+.. image:: https://img.shields.io/badge/python-3.7-blue.svg
+    :target: https://www.python.org/downloads/release/python-374/
 
 YASS is a plugin-powered search engine based subdomainer.
 Its goal is to give you a tool to query whatever search engine you like and parse HTML response writing *less than 10 lines of code*.
@@ -54,11 +54,7 @@ YASS plugins follow just a few rules:
 INSTALL
 -------
 
-YASS depends on:
-
-- Python <= 2.7.9
-
-and have just two requirements:
+YASS is fully compatible with Python 3.7 and have just two requirements:
 
 - PyQuery >= 1.2.9
 - Colorama
