@@ -16,6 +16,7 @@
 
 import re
 import time
+from typing import List, Optional
 
 from pyquery import PyQuery
 
@@ -113,25 +114,22 @@ class PluginBase(with_metaclass(PluginMeta)):
             )
 
     @staticmethod
-    def extract(elements):
+    def extract(elements) -> List[str]:
         """
         Extract data from given HTML elements
 
         :param elements: HTML elements obtained with PyQuery execution
         :type elements: list[Element]
         :return: extracted data
-        :rtype: list[str]
         """
         return [element.text_content() for element in elements]
 
-    def clean(self, urls):
+    def clean(self, urls: List[str]) -> List[str]:
         """
         Clean subdomains URLs from noise
 
-        :param urls: an ensamble of URLs to clean
-        :type urls: list[str]
+        :param urls: an ensemble of URLs to clean
         :return: cleaned subdomains URLs
-        :rtype: list[str]
         """
         subdomains = []
         regexp = re.compile(r'(.+://)?(?P<subdomain>(.+)\.{domain})([/\?].*)?'.format(domain=self.domain))
@@ -141,16 +139,12 @@ class PluginBase(with_metaclass(PluginMeta)):
                 subdomains.append(match.group('subdomain'))
         return subdomains
 
-    def url(self, exclude_subdomains=None):
+    def url(self, exclude_subdomains: Optional[List[str]] = None) -> str:
         """
         Build the search query URL sring
 
         :param exclude_subdomains: subdomains to exclude from the search
-        :type exclude_subdomains: list[str]
-        :param page: results page to ask for
-        :type page: int
         :return: URL to use as search query
-        :rtype: str
         """
         meta = self._meta
 
