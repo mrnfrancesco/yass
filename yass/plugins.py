@@ -29,13 +29,11 @@ class Ask(PluginBase):
         subdomains_selector = 'p.PartialSearchResults-item-url'
 
 
-# Website unresponsive
-#
-# class Baidu(PluginBase):
-#    class Meta:
-#        search_url = 'https://www.baidu.com/s'
-#        query_param = 'wd'
-#        subdomains_selector = 'span.g'
+class Baidu(PluginBase):
+    class Meta:
+        search_url = 'https://www.baidu.com/s'
+        query_param = 'wd'
+        subdomains_selector = 'span.g'
 
 
 class Bing(PluginBase):
