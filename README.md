@@ -79,12 +79,13 @@ YASS comes with some pre-built plugins:
 
 - Aol
 - Ask
-- Baidu (unresponsive)
+- Baidu
 - Bing
-- Google (disabled due to anti-bot checks)
 - StartPage
 - WebCrawler
 - Yahoo
+- Teoma
+- Exaled
 
 You can look at them in `yass/plugins.py`.
 
