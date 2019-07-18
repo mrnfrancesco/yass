@@ -1,0 +1,54 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Added
+- Docker container
+- Test cases for plugins creation and running
+
+## [0.8.0] - 2019-07-18
+### Added
+- Support for Teoma search engine
+- Support for Exaled search engine
+
+### Changed
+- Re-Enabled Baidu (was blocked by personal firewall)
+- CHANGELOG now adheres to "Keep a Changelog" format
+- Functions and methods now use Python3 type suggestion for parameters
+
+### Fixed
+- Add missing TimeoutError error handling
+
+
+## [0.7.3] - 2019-07-11
+### Added
+- Python3 migration due to Python2 deprecation
+
+### Changed
+- Disabled Baidu plugin due to unresponsive website
+- Disabled Google plugin due to some new anti-bot tricks
+- Add more details on README
+
+### Fixed
+- Fix plugin meta to match new website HTML structure
+
+
+## [0.6.4] - 2015-06-09
+### Added
+- Logging system
+- Option to output results in grepable format
+- Option to enable verbore output for debugging purpose
+- Option to set output verbosity
+- Options to enable/disable colors in output
+
+### Changed
+- "domain" option is now the first positional argument
+- "exclude" option is now the second positional argument
+
+
+## [0.4.3] - 2015-05-29
+
+First release

@@ -1,5 +1,5 @@
 import unittest
-from yass.plugins import Google
+from yass.plugins import Aol
 
 from yass.shortcuts import iter_plugins
 
@@ -20,7 +20,7 @@ class TestShortcuts(unittest.TestCase):
         self.assertGreater(len(iter_plugins(None)), 0)
 
         # Check plugin existance
-        self.assertIn(Google, iter_plugins(None))
+        self.assertIn(Aol, iter_plugins(None))
 
-        # Check No-Google predicate
-        self.assertNotIn(Google, iter_plugins(lambda cls: cls is not Google))
+        # Check No-Aol predicate
+        self.assertNotIn(Aol, iter_plugins(lambda cls: cls is not Aol))

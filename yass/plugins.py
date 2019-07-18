@@ -29,13 +29,11 @@ class Ask(PluginBase):
         subdomains_selector = 'p.PartialSearchResults-item-url'
 
 
-# Website unresponsive
-#
-# class Baidu(PluginBase):
-#    class Meta:
-#        search_url = 'https://www.baidu.com/s'
-#        query_param = 'wd'
-#        subdomains_selector = 'span.g'
+class Baidu(PluginBase):
+    class Meta:
+        search_url = 'https://www.baidu.com/s'
+        query_param = 'wd'
+        subdomains_selector = 'span.g'
 
 
 class Bing(PluginBase):
@@ -72,3 +70,15 @@ class Yahoo(PluginBase):
         search_url = 'https://search.yahoo.com/search'
         query_param = 'p'
         subdomains_selector = 'span.fz-ms.fw-m.fc-12th.wr-bw.lh-17'
+
+
+class Teoma(PluginBase):
+    class Meta:
+        search_url = 'https://www.teoma.com/web'
+        subdomains_selector = '.algo-display-url'
+
+
+class Exalead(PluginBase):
+    class Meta:
+        search_url = 'https://www.exalead.com/search/web/results'
+        subdomains_selector = 'li.media a.ellipsis'
