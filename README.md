@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/mrnfrancesco/yass.svg?branch=master)](https://travis-ci.org/mrnfrancesco/yass)
 [![Code Climate](https://codeclimate.com/github/mrnfrancesco/yass/badges/gpa.svg)](https://codeclimate.com/github/mrnfrancesco/yass)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-374/)
+[![Release](https://img.shields.io/badge/release-v0.8.0-orange.svg)](https://github.com/mrnfrancesco/yass/releases/tag/v0.8.0)
 
 YASS is a plugin-powered search engine based subdomainer.
 Its goal is to give you a tool to query whatever search engine you like and parse HTML response writing *less than 10 lines of code*.
