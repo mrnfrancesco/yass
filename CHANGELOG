@@ -6,8 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
-- Docker container
 - Test cases for plugins creation and running
+
+## [0.9.2] - 2019-08-01
+### Added
+- Docker container
+
+### Changed
+- README formatting
+
+### Fixed
+- Travis CI build fail
+
 
 ## [0.8.0] - 2019-07-18
 ### Added
