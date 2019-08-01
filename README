@@ -10,8 +10,8 @@ YASS - Yet Another Subdomainer Software
    :alt: Code Climate
 .. image:: https://img.shields.io/badge/python-3.7-blue.svg
     :target: https://www.python.org/downloads/release/python-374/
-.. image:: https://img.shields.io/badge/release-v0.7.3-orange.svg
-    :target: https://github.com/mrnfrancesco/yass/releases/tag/v0.8.0
+.. image:: https://img.shields.io/badge/release-v0.9.2-green.svg
+    :target: https://github.com/mrnfrancesco/yass/releases/tag/v0.9.2
 
 YASS is a plugin-powered search engine based subdomainer.
 Its goal is to give you a tool to query whatever search engine you like and parse HTML response writing *less than 10 lines of code*.
@@ -48,7 +48,7 @@ Example output
 
         ________________________________________________
 
-        YASS - Yet Another Subdomainer Software (v0.7.3)
+        YASS - Yet Another Subdomainer Software (v0.9.2)
             by Francesco Marano (@mrnfrancesco)
         ________________________________________________
 
@@ -129,8 +129,21 @@ YASS is fully compatible with Python 3.7 and have just two requirements:
 - PyQuery >= 1.2.9
 - Colorama
 
-To install YASS and its requirements::
+To install YASS and its requirements:
 
     git clone https://github.com/mrnfrancesco/yass.git  # or download and unzip release archive
     cd yass
     ./setup.py install
+
+Or you can use Docker:
+
+    # Download YASS' Dockerfile
+    $ wget "https://raw.githubusercontent.com/mrnfrancesco/yass/master/Dockerfile"
+
+    # Build the latest version of YASS (use YASS_VERSION arg to build specific version)
+    $ docker build -t mrnfrancesco/yass:latest .
+
+    $ docker run --rm -ti mrnfrancesco/yass:latest /bin/sh
+
+    /yass # yass --version
+    YASS v0.9.2
