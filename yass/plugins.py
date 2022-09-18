@@ -43,8 +43,7 @@ class Bing(PluginBase):
         subdomains_selector = '#b_results li.b_algo cite'
 
 
-# Anti-bot tricks make yass fails with Google
-#
+# Blocked by CAPTCHA
 # class Google(PluginBase):
 #     class Meta:
 #         search_url = 'https://www.google.com/search'
