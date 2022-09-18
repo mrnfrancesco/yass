@@ -26,7 +26,7 @@ class Aol(PluginBase):
 class Ask(PluginBase):
     class Meta:
         search_url = 'https://www.ask.com/web'
-        subdomains_selector = 'p.PartialSearchResults-item-url'
+        subdomains_selector = 'div.PartialSearchResults-item-url'
 
 
 class Baidu(PluginBase):
