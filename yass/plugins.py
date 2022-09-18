@@ -43,6 +43,12 @@ class Bing(PluginBase):
         subdomains_selector = '#b_results li.b_algo cite'
 
 
+class DuckDuckGo(PluginBase):
+    class Meta:
+        search_url = 'https://html.duckduckgo.com/html/'
+        subdomains_selector = 'a.result__url'
+
+
 # Blocked by CAPTCHA
 # class Google(PluginBase):
 #     class Meta:
