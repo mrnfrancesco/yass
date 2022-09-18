@@ -77,9 +77,8 @@ class Yahoo(PluginBase):
         subdomains_selector = 'ol.searchCenterMiddle li div > span'
 
 
-
-
-class Exalead(PluginBase):
-    class Meta:
-        search_url = 'https://www.exalead.com/search/web/results'
-        subdomains_selector = 'li.media a.ellipsis'
+# Blocked by CAPTCHA
+# class Exalead(PluginBase):
+#     class Meta:
+#         search_url = 'https://www.exalead.com/search/web/results'
+#         subdomains_selector = 'li.media a.ellipsis'
