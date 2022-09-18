@@ -15,6 +15,7 @@
 
 
 import re
+import string
 import time
 from typing import List, Optional
 
@@ -122,7 +123,7 @@ class PluginBase(with_metaclass(PluginMeta)):
         :type elements: list[Element]
         :return: extracted data
         """
-        return [element.text_content() for element in elements]
+        return [element.text_content().translate(str.maketrans('', '', string.whitespace)) for element in elements]
 
     def clean(self, urls: List[str]) -> List[str]:
         """
@@ -132,7 +133,7 @@ class PluginBase(with_metaclass(PluginMeta)):
         :return: cleaned subdomains URLs
         """
         subdomains = []
-        regexp = re.compile(r'(.+://)?(?P<subdomain>(.+)\.{domain})([/\?].*)?'.format(domain=self.domain))
+        regexp = re.compile(r'(.+://)?(?P<subdomain>(.+)\.{domain})([/?].*)?'.format(domain=self.domain))
         for url in urls:
             match = regexp.match(url)
             if match and match.group('subdomain'):

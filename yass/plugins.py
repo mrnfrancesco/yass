@@ -26,14 +26,15 @@ class Aol(PluginBase):
 class Ask(PluginBase):
     class Meta:
         search_url = 'https://www.ask.com/web'
-        subdomains_selector = 'p.PartialSearchResults-item-url'
+        subdomains_selector = 'div.PartialSearchResults-item-url'
 
 
 class Baidu(PluginBase):
     class Meta:
         search_url = 'https://www.baidu.com/s'
         query_param = 'wd'
-        subdomains_selector = 'span.g'
+        subdomains_selector = 'div.result div.c-row span'
+        request_delay = 1
 
 
 class Bing(PluginBase):
@@ -42,8 +43,13 @@ class Bing(PluginBase):
         subdomains_selector = '#b_results li.b_algo cite'
 
 
-# Anti-bot tricks make yass fails with Google
-#
+class DuckDuckGo(PluginBase):
+    class Meta:
+        search_url = 'https://html.duckduckgo.com/html/'
+        subdomains_selector = 'a.result__url'
+
+
+# Blocked by CAPTCHA
 # class Google(PluginBase):
 #     class Meta:
 #         search_url = 'https://www.google.com/search'
@@ -51,34 +57,29 @@ class Bing(PluginBase):
 #         request_delay = 1
 
 
-class StartPage(PluginBase):
-    class Meta:
-        search_url = 'https://startpage.com/do/search'
-        subdomains_selector = 'span.search-item__url'
+# Blocked by CAPTCHA
+# class StartPage(PluginBase):
+#     class Meta:
+#         search_url = 'https://startpage.com/do/search'
+#         subdomains_selector = 'a.w-gl__result-url'
 
 
-class WebCrawler(PluginBase):
-    class Meta:
-        search_url = 'https://www.webcrawler.com/serp'
-        subdomains_selector = 'div.resultDisplayUrl'
-        include_param = ''
-        exclude_param = '-'
+# Blocked by "403: Forbidden" HTTP error
+# class WebCrawler(PluginBase):
+#     class Meta:
+#         search_url = 'https://www.webcrawler.com/serp'
+#         subdomains_selector = 'div.resultDisplayUrl'
 
 
 class Yahoo(PluginBase):
     class Meta:
         search_url = 'https://search.yahoo.com/search'
         query_param = 'p'
-        subdomains_selector = 'span.fz-ms.fw-m.fc-12th.wr-bw.lh-17'
+        subdomains_selector = 'ol.searchCenterMiddle li div > span'
 
 
-class Teoma(PluginBase):
-    class Meta:
-        search_url = 'https://www.teoma.com/web'
-        subdomains_selector = '.algo-display-url'
-
-
-class Exalead(PluginBase):
-    class Meta:
-        search_url = 'https://www.exalead.com/search/web/results'
-        subdomains_selector = 'li.media a.ellipsis'
+# Blocked by CAPTCHA
+# class Exalead(PluginBase):
+#     class Meta:
+#         search_url = 'https://www.exalead.com/search/web/results'
+#         subdomains_selector = 'li.media a.ellipsis'

@@ -4,9 +4,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [0.11.7] - 2022-09-18
 ### Added
-- Test cases for plugins creation and running
+- DuckDuckGo plugin
+
+### Changed
+- `--debugging` CLI parameter is now `--debug`
+
+### Fixed
+- False negatives due to whitespaces in subdomain extracted text (e.g. "\n     some.subdomain.com  \n")
+- Subdomain selectors for Yahoo, Ask, Baidu and StartPage
+- WebCrawler query parameters
+- Baidu requests delay to avoid anti-bot checks
+
+### Removed
+- WebCrawler plugin because of `403: Forbidden` HTTP error
+- StartPage and Exaled plugin because of CAPTCHA
+- Teoma plugin since it now redirects to Ask
+
 
 ## [0.9.2] - 2019-08-01
 ### Added

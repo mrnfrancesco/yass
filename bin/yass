@@ -63,7 +63,7 @@ def parse(arguments=None):
     output = parser.add_argument_group('Output arguments')
     output.add_argument('-g', '--grepable', help="output results in grepable format (default: %(default)s)",
                         default=False, action="store_true")
-    output.add_argument('-d', '--debugging', default=False, action="store_true",
+    output.add_argument('-d', '--debug', default=False, action="store_true",
                         help="set output format to a more verbose one, for debugging purpose (default: %(default)s)")
     output.add_argument('-l', '--level', help="set output verbosity (default: %(default)s)",
                         choices=['debug', 'info', 'warning', 'error', 'critical'], default='info')
@@ -99,13 +99,13 @@ def banner():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) is 1:
+    if len(sys.argv) == 1:
         sys.argv.append('--usage')
 
     options = parse(arguments=None)  # Use sys.argv[1:] as default arguments
     if options.grepable:
         options.level = None
-    logger_config(options.colored, options.debugging, options.level)
+    logger_config(options.colored, options.debug, options.level)
 
     if not options.grepable:
         print(banner())
