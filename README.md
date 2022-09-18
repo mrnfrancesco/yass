@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/mrnfrancesco/yass.svg?branch=master)](https://travis-ci.org/mrnfrancesco/yass)
 [![Code Climate](https://codeclimate.com/github/mrnfrancesco/yass/badges/gpa.svg)](https://codeclimate.com/github/mrnfrancesco/yass)
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-374/)
-[![Release](https://img.shields.io/badge/release-v0.9.2-green.svg)](https://github.com/mrnfrancesco/yass/releases/tag/v0.9.2)
+[![Release](https://img.shields.io/badge/release-v0.11.7-green.svg)](https://github.com/mrnfrancesco/yass/releases/tag/v0.11.7)
 
 YASS is a plugin-powered search engine based subdomainer.
 Its goal is to give you a tool to query whatever search engine you like and parse HTML response writing *less than 10 lines of code*.
@@ -40,7 +40,7 @@ $ yass microsoft.com
 
     ________________________________________________
 
-    YASS - Yet Another Subdomainer Software (v0.9.2)
+    YASS - Yet Another Subdomainer Software (v0.11.7)
         by Francesco Marano (@mrnfrancesco)
     ________________________________________________
 
@@ -141,5 +141,5 @@ $ docker build -t mrnfrancesco/yass:latest .
 $ docker run --rm -ti mrnfrancesco/yass:latest /bin/sh
 
 /yass # yass --version
-YASS v0.9.2
+YASS v0.11.7
 ```
