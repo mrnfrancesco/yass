@@ -57,10 +57,11 @@ class DuckDuckGo(PluginBase):
 #         request_delay = 1
 
 
-class StartPage(PluginBase):
-    class Meta:
-        search_url = 'https://startpage.com/do/search'
-        subdomains_selector = 'a.w-gl__result-url'
+# Blocked by CAPTCHA
+# class StartPage(PluginBase):
+#     class Meta:
+#         search_url = 'https://startpage.com/do/search'
+#         subdomains_selector = 'a.w-gl__result-url'
 
 
 # Blocked by "403: Forbidden" HTTP error
