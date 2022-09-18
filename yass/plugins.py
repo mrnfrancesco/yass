@@ -63,10 +63,11 @@ class StartPage(PluginBase):
         subdomains_selector = 'a.w-gl__result-url'
 
 
-class WebCrawler(PluginBase):
-    class Meta:
-        search_url = 'https://www.webcrawler.com/serp'
-        subdomains_selector = 'div.resultDisplayUrl'
+# Blocked by "403: Forbidden" HTTP error
+# class WebCrawler(PluginBase):
+#     class Meta:
+#         search_url = 'https://www.webcrawler.com/serp'
+#         subdomains_selector = 'div.resultDisplayUrl'
 
 
 class Yahoo(PluginBase):
