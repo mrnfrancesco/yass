@@ -85,6 +85,8 @@ YASS comes with some pre-built plugins:
 - Ask
 - Baidu
 - Bing
+- DuckDuckGo
+- Google
 - StartPage
 - WebCrawler
 - Yahoo
