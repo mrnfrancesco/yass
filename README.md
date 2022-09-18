@@ -20,7 +20,7 @@ Its goal is to give you a tool to query whatever search engine you like and pars
     
     Output arguments:
       -g, --grepable        output results in grepable format (default: False)
-      -d, --debugging       set output format to a more verbose one, for debugging
+      -d, --debug           set output format to a more verbose one, for debugging
                             purpose (default: False)
       -l {debug,info,warning,error,critical}, --level {debug,info,warning,error,critical}
                             set output verbosity (default: info)
