@@ -67,8 +67,6 @@ class WebCrawler(PluginBase):
     class Meta:
         search_url = 'https://www.webcrawler.com/serp'
         subdomains_selector = 'div.resultDisplayUrl'
-        include_param = ''
-        exclude_param = '-'
 
 
 class Yahoo(PluginBase):
