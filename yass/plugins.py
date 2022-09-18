@@ -33,7 +33,7 @@ class Baidu(PluginBase):
     class Meta:
         search_url = 'https://www.baidu.com/s'
         query_param = 'wd'
-        subdomains_selector = 'span.g'
+        subdomains_selector = 'div.result div.c-row span'
 
 
 class Bing(PluginBase):
