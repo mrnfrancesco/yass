@@ -69,7 +69,7 @@ def logger(depth=3):
     return caller.f_locals[lname]
 
 
-def config(colored=True, debugging=False, level='info'):
+def config(colored=True, debug=False, level='info'):
     level = str(level)  # to avoid error if level is None
 
     dictConfig({
@@ -90,7 +90,7 @@ def config(colored=True, debugging=False, level='info'):
         },
         'handlers': {
             'custom': {
-                'formatter': 'debugging' if debugging else 'default',
+                'formatter': 'debugging' if debug else 'default',
                 'class': 'yass.logger._ColorStreamHandler' if colored else 'logging.StreamHandler',
                 'stream': 'ext://sys.stdout'
             }
