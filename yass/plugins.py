@@ -69,7 +69,7 @@ class Yahoo(PluginBase):
     class Meta:
         search_url = 'https://search.yahoo.com/search'
         query_param = 'p'
-        subdomains_selector = 'span.fz-ms.fw-m.fc-12th.wr-bw.lh-17'
+        subdomains_selector = 'ol.searchCenterMiddle li div > span'
 
 
 class Teoma(PluginBase):
