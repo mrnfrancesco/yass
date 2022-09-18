@@ -60,7 +60,7 @@ class DuckDuckGo(PluginBase):
 class StartPage(PluginBase):
     class Meta:
         search_url = 'https://startpage.com/do/search'
-        subdomains_selector = 'span.search-item__url'
+        subdomains_selector = 'a.w-gl__result-url'
 
 
 class WebCrawler(PluginBase):
