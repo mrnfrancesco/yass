@@ -34,6 +34,7 @@ class Baidu(PluginBase):
         search_url = 'https://www.baidu.com/s'
         query_param = 'wd'
         subdomains_selector = 'div.result div.c-row span'
+        request_delay = 1
 
 
 class Bing(PluginBase):
