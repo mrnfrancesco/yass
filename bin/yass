@@ -99,7 +99,7 @@ def banner():
 
 
 if __name__ == '__main__':
-    if len(sys.argv) is 1:
+    if len(sys.argv) == 1:
         sys.argv.append('--usage')
 
     options = parse(arguments=None)  # Use sys.argv[1:] as default arguments
