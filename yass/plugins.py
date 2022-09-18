@@ -72,10 +72,6 @@ class Yahoo(PluginBase):
         subdomains_selector = 'ol.searchCenterMiddle li div > span'
 
 
-class Teoma(PluginBase):
-    class Meta:
-        search_url = 'https://www.teoma.com/web'
-        subdomains_selector = '.algo-display-url'
 
 
 class Exalead(PluginBase):
