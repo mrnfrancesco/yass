@@ -142,7 +142,7 @@ class PluginBase(with_metaclass(PluginMeta)):
 
     def url(self, exclude_subdomains: Optional[List[str]] = None) -> str:
         """
-        Build the search query URL sring
+        Build the search query URL string
 
         :param exclude_subdomains: subdomains to exclude from the search
         :return: URL to use as search query
